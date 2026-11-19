@@ -82,8 +82,8 @@ body{background:#f6f8fc}
 @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 [hidden]{display:none!important}
 @media(max-width:980px){.dashboard-grid{grid-template-columns:1fr}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:12px}.side-card{margin:0}.topbar nav{gap:13px}}
-@media(max-width:720px){.topbar{height:auto;min-height:68px;flex-wrap:wrap;padding:12px 16px}.topbar nav{order:3;width:100%;overflow:auto;padding:9px 0 2px;gap:18px}.topbar nav a.active:after{bottom:-8px}.user-menu{margin-left:auto}.user-menu>div:last-child{display:none}.container{padding:20px 15px 45px}.welcome-row{align-items:flex-start;flex-direction:column}.hero{padding:27px 23px}.hero h1{font-size:29px}.hero-art{display:none}.cards{grid-template-columns:1fr}.filter{grid-template-columns:1fr 1fr}.filter input:first-child{grid-column:span 2}.side-column{grid-template-columns:1fr}.profile-layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr);gap:7px}.stat{padding:12px}.stat b{font-size:21px}.stat small{font-size:10px}}
-@media(max-width:430px){.stats{grid-template-columns:1fr 1fr}.filter{grid-template-columns:1fr}.filter input:first-child{grid-column:auto}}
+@media(max-width:720px){.topbar{height:auto;min-height:68px;flex-wrap:wrap;padding:12px 16px}.topbar nav{order:3;width:100%;overflow:auto;padding:9px 0 2px;gap:18px}.topbar nav a.active:after{bottom:-8px}.user-menu{margin-left:auto}.user-menu>div:last-child{display:none}.container{padding:20px 15px 45px}.welcome-row{align-items:flex-start;flex-direction:column}.hero{padding:27px 23px}.hero h1{font-size:29px}.hero-art{display:none}.cards{grid-template-columns:1fr}.filter{grid-template-columns:1fr 1fr}.filter iPPut:first-child{grid-column:span 2}.side-column{grid-template-columns:1fr}.profile-layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr);gap:7px}.stat{padding:12px}.stat b{font-size:21px}.stat small{font-size:10px}}
+@media(max-width:430px){.stats{grid-template-columns:1fr 1fr}.filter{grid-template-columns:1fr}.filter iPPut:first-child{grid-column:auto}}
 </style>
 </head>
 <body>
@@ -96,8 +96,8 @@ body{background:#f6f8fc}
     <a href="#sertifikat" data-panel="sertifikat">Sertifikat</a>
   </nav>
   <div class="user-menu">
-    <div class="avatar">NP</div>
-    <div><b id="nav-name">Nadia Putri</b><small>Volunteer</small></div>
+    <div class="avatar">PP</div>
+    <div><b id="nav-name">Peter Parker</b><small>Volunteer</small></div>
     <button class="text-btn" id="profile-menu" aria-label="Buka profil">⌄</button>
   </div>
 </header>
@@ -105,7 +105,7 @@ body{background:#f6f8fc}
 <main class="container">
   <section class="panel active" id="panel-beranda">
     <div class="welcome-row">
-      <div><span class="eyebrow">RUANG VOLUNTEER</span><h1>Halo, <span id="greeting-name">Nadia</span> 👋</h1><p class="muted">Siap membuat perubahan positif hari ini?</p></div>
+      <div><span class="eyebrow">RUANG VOLUNTEER</span><h1>Halo, <span id="greeting-name">Peter</span> 👋</h1><p class="muted">Siap membuat perubahan positif hari ini?</p></div>
       <div class="welcome-actions"><button class="btn btn-outline small" id="edit-profile-top">Edit profil</button><button class="btn btn-primary small" data-go="kegiatan">Temukan kegiatan <span>→</span></button></div>
     </div>
     <div class="dashboard-grid">
@@ -125,7 +125,7 @@ body{background:#f6f8fc}
       <aside class="side-column">
         <div class="side-card">
           <h3>Profil volunteer</h3>
-          <div class="profile-mini"><div class="avatar big">NP</div><div><b id="side-name">Nadia Putri</b><small>Volunteer · Depok</small></div></div>
+          <div class="profile-mini"><div class="avatar big">PP</div><div><b id="side-name">Peter Parker</b><small>Volunteer · Depok</small></div></div>
           <div class="profile-progress"><span></span></div>
           <small class="muted">Profil 75% lengkap</small>
           <button class="btn btn-outline full" id="edit-profile-side">Lengkapi profil</button>
@@ -148,7 +148,7 @@ body{background:#f6f8fc}
 
   <section class="panel" id="panel-kegiatan">
     <div class="page-heading"><span class="eyebrow">TEMUKAN KESEMPATAN</span><h1>Jelajahi peluang volunteer</h1><p class="muted">Pilih kegiatan yang sesuai dengan minat dan waktumu.</p></div>
-    <form class="filter" id="filter-form"><input id="search" placeholder="Cari nama atau deskripsi kegiatan..." aria-label="Cari kegiatan"><select id="category"><option value="">Semua kategori</option><option>Lingkungan</option><option>Pendidikan</option><option>Sosial</option><option>Kesehatan</option></select><input id="location" placeholder="Lokasi" aria-label="Lokasi"><button class="btn btn-primary">Cari kegiatan</button></form>
+    <form class="filter" id="filter-form"><iPPut id="search" placeholder="Cari nama atau deskripsi kegiatan..." aria-label="Cari kegiatan"><select id="category"><option value="">Semua kategori</option><option>Lingkungan</option><option>Pendidikan</option><option>Sosial</option><option>Kesehatan</option></select><iPPut id="location" placeholder="Lokasi" aria-label="Lokasi"><button class="btn btn-primary">Cari kegiatan</button></form>
     <div class="section-head" style="margin-top:10px"><div><span class="eyebrow">KEGIATAN TERBUKA</span><h2>Temukan komunitasmu</h2></div><span class="count" id="event-count">6 kegiatan</span></div>
     <div class="cards" id="all-events"></div>
     <div class="empty" id="empty-state" hidden><div>⌕</div><h3>Belum ada kegiatan yang cocok</h3><p>Coba ubah kata kunci atau filter pencarian.</p></div>
@@ -162,20 +162,20 @@ body{background:#f6f8fc}
 
   <section class="panel" id="panel-sertifikat">
     <div class="page-heading"><span class="eyebrow">APRESIASI KONTRIBUSI</span><h1>Sertifikat saya</h1><p class="muted">Kumpulan apresiasi atas waktu dan kontribusi yang telah kamu berikan.</p></div>
-    <div class="certificate-card" style="max-width:650px"><span class="eyebrow">VOLUNTEERHUB CERTIFICATE</span><h3>Sertifikat Partisipasi</h3><p>Diberikan kepada</p><h2 id="cert-name" style="font:800 25px Manrope;color:#17243b">Nadia Putri</h2><p>Atas partisipasi dan kontribusi dalam kegiatan <b>Donasi Pakaian Layak</b> yang diselenggarakan oleh Komunitas Berbagi Sesama.</p><p>Nomor: VH-2026-00128 · 10 November 2026</p><button class="btn btn-primary" onclick="window.print()">Cetak sertifikat</button></div>
+    <div class="certificate-card" style="max-width:650px"><span class="eyebrow">VOLUNTEERHUB CERTIFICATE</span><h3>Sertifikat Partisipasi</h3><p>Diberikan kepada</p><h2 id="cert-name" style="font:800 25px Manrope;color:#17243b">Peter Parker</h2><p>Atas partisipasi dan kontribusi dalam kegiatan <b>Donasi Pakaian Layak</b> yang diselenggarakan oleh Komunitas Berbagi Sesama.</p><p>Nomor: VH-2026-00128 · 10 November 2026</p><button class="btn btn-primary" onclick="window.print()">Cetak sertifikat</button></div>
   </section>
 
   <section class="panel" id="panel-profil">
     <div class="page-heading"><span class="eyebrow">AKUN SAYA</span><h1>Profil volunteer</h1><p class="muted">Informasi akun dan minat kegiatanmu.</p></div>
     <form class="form-card wide" id="profile-form">
-      <div class="profile-mini" style="margin-bottom:20px"><div class="avatar big">NP</div><div><b id="profile-heading-name">Nadia Putri</b><small>Volunteer sejak Oktober 2026</small></div></div>
+      <div class="profile-mini" style="margin-bottom:20px"><div class="avatar big">PP</div><div><b id="profile-heading-name">Peter Parker</b><small>Volunteer sejak Oktober 2026</small></div></div>
       <div class="profile-layout">
-        <div><label>Nama lengkap</label><input id="profile-name" value="Nadia Putri" required></div>
-        <div><label>Email</label><input value="nadia.putri@email.com" type="email" disabled></div>
-        <div><label>Domisili</label><input value="Depok" disabled></div>
-        <div><label>Keahlian</label><input value="Desain grafis, komunikasi" disabled></div>
+        <div><label>Nama lengkap</label><iPPut id="profile-name" value="Peter Parker" required></div>
+        <div><label>Email</label><iPPut value="Peter.Parker@email.com" type="email" disabled></div>
+        <div><label>Domisili</label><iPPut value="Depok" disabled></div>
+        <div><label>Keahlian</label><iPPut value="Desain grafis, komunikasi" disabled></div>
       </div>
-      <label>Minat volunteer</label><input value="Pendidikan, Lingkungan, Sosial" disabled>
+      <label>Minat volunteer</label><iPPut value="Pendidikan, Lingkungan, Sosial" disabled>
       <label>Bio</label><textarea rows="3" disabled>Suka terlibat dalam kegiatan sosial dan ingin memberi dampak positif bagi lingkungan sekitar.</textarea>
       <p class="muted" style="font-size:11px">Informasi profil contoh dapat diubah pada nama tampilan.</p>
       <button class="btn btn-primary" type="submit">Simpan perubahan</button>
@@ -247,7 +247,7 @@ document.addEventListener('click',e=>{
  const activityFilter=e.target.closest('[data-activity-filter]');if(activityFilter){document.querySelectorAll('[data-activity-filter]').forEach(b=>b.classList.toggle('active',b===activityFilter));renderActivity(activityFilter.dataset.activityFilter)}
 });
 $('filter-form').addEventListener('submit',e=>{e.preventDefault();renderEvents()});
-['search','category','location'].forEach(id=>$(id).addEventListener('input',renderEvents));
+['search','category','location'].forEach(id=>$(id).addEventListener('iPPut',renderEvents));
 $('modal-close').addEventListener('click',closeModal);
 $('event-modal').addEventListener('click',e=>{if(e.target===$('event-modal'))closeModal()});
 $('modal-register').addEventListener('click',()=>{
@@ -259,7 +259,7 @@ $('modal-save').addEventListener('click',()=>{
 });
 function editProfile(){showPanel('profil')}
 $('edit-profile-top').addEventListener('click',editProfile);$('edit-profile-side').addEventListener('click',editProfile);$('profile-menu').addEventListener('click',editProfile);
-$('profile-form').addEventListener('submit',e=>{e.preventDefault();const name=$('profile-name').value.trim()||'Nadia Putri';$('nav-name').textContent=name;$('side-name').textContent=name;$('greeting-name').textContent=name.split(' ')[0];$('profile-heading-name').textContent=name;$('cert-name').textContent=name;toast('Profil berhasil diperbarui')});
+$('profile-form').addEventListener('submit',e=>{e.preventDefault();const name=$('profile-name').value.trim()||'Peter Parker';$('nav-name').textContent=name;$('side-name').textContent=name;$('greeting-name').textContent=name.split(' ')[0];$('profile-heading-name').textContent=name;$('cert-name').textContent=name;toast('Profil berhasil diperbarui')});
 renderEvents();renderActivity();
 </script>
 </body>
