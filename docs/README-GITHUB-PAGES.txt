@@ -1,11 +1,11 @@
-# GitHub Pages — VolunteerHub
+# VolunteerHub — GitHub Pages
 
-Folder `docs/` berisi versi tampilan statis untuk GitHub Pages.
+Versi halaman statis VolunteerHub berada di `docs/`.
 
 ## Mengaktifkan GitHub Pages
-1. Push/commit folder `docs/` ke repository GitHub.
-2. Buka repository di GitHub → Settings → Pages.
-3. Pada Build and deployment, pilih Deploy from a branch.
-4. Branch: `main`, folder: `/docs`, lalu Save.
+1. Commit dan push folder `docs/` ke branch `main`.
+2. Buka repository GitHub → Settings → Pages.
+3. Pada Build and deployment, pilih **Deploy from a branch**.
+4. Pilih branch `main` dan folder `/docs`, lalu Save.
 
-Catatan: GitHub Pages hanya menayangkan HTML/CSS/JavaScript. Fitur PHP dan MySQL (login, register, dashboard, pengelolaan kegiatan, dan database) tidak berjalan di GitHub Pages. File aplikasi PHP asli tetap berada di luar folder `docs/` dan tidak diubah.
+Halaman ini memakai akun volunteer contoh dan data kegiatan contoh. Interaksi seperti pencarian, detail kegiatan, simpan kegiatan, pendaftaran lokal, aktivitas, dan pengubahan nama tampilan berjalan di browser. Data interaksi tidak tersimpan ke database dan tidak dibagikan antarperangkat. Aplikasi PHP/MySQL asli tetap tersedia di folder utama dan tidak diubah.
