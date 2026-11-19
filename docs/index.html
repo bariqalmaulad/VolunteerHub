@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="id">
 <head>
@@ -74,6 +75,8 @@ body{background:#f6f8fc}
 .profile-field{background:#f7f9fd;border:1px solid var(--line);border-radius:11px;padding:13px}
 .profile-field small{display:block;color:var(--muted);font-size:10px;margin-bottom:5px}
 .profile-field b{font-size:13px}
+#profile-form label{display:block;margin:14px 0 6px;font-size:12px;font-weight:700;color:#52627a}
+#profile-form input,#profile-form textarea{width:100%;box-sizing:border-box}
 .certificate-card{background:linear-gradient(135deg,#fff,#f4f8ff);border:1px solid #cbdcf7;border-radius:14px;padding:23px;text-align:center}
 .certificate-card h3{font:800 19px Manrope;color:#1746ad}
 .certificate-card p{font-size:12px;color:#68778d;line-height:1.6}
@@ -82,8 +85,8 @@ body{background:#f6f8fc}
 @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 [hidden]{display:none!important}
 @media(max-width:980px){.dashboard-grid{grid-template-columns:1fr}.side-column{display:grid;grid-template-columns:1fr 1fr;gap:12px}.side-card{margin:0}.topbar nav{gap:13px}}
-@media(max-width:720px){.topbar{height:auto;min-height:68px;flex-wrap:wrap;padding:12px 16px}.topbar nav{order:3;width:100%;overflow:auto;padding:9px 0 2px;gap:18px}.topbar nav a.active:after{bottom:-8px}.user-menu{margin-left:auto}.user-menu>div:last-child{display:none}.container{padding:20px 15px 45px}.welcome-row{align-items:flex-start;flex-direction:column}.hero{padding:27px 23px}.hero h1{font-size:29px}.hero-art{display:none}.cards{grid-template-columns:1fr}.filter{grid-template-columns:1fr 1fr}.filter iPPut:first-child{grid-column:span 2}.side-column{grid-template-columns:1fr}.profile-layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr);gap:7px}.stat{padding:12px}.stat b{font-size:21px}.stat small{font-size:10px}}
-@media(max-width:430px){.stats{grid-template-columns:1fr 1fr}.filter{grid-template-columns:1fr}.filter iPPut:first-child{grid-column:auto}}
+@media(max-width:720px){.topbar{height:auto;min-height:68px;flex-wrap:wrap;padding:12px 16px}.topbar nav{order:3;width:100%;overflow:auto;padding:9px 0 2px;gap:18px}.topbar nav a.active:after{bottom:-8px}.user-menu{margin-left:auto}.user-menu>div:last-child{display:none}.container{padding:20px 15px 45px}.welcome-row{align-items:flex-start;flex-direction:column}.hero{padding:27px 23px}.hero h1{font-size:29px}.hero-art{display:none}.cards{grid-template-columns:1fr}.filter{grid-template-columns:1fr 1fr}.filter input:first-child{grid-column:span 2}.side-column{grid-template-columns:1fr}.profile-layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr);gap:7px}.stat{padding:12px}.stat b{font-size:21px}.stat small{font-size:10px}}
+@media(max-width:430px){.stats{grid-template-columns:1fr 1fr}.filter{grid-template-columns:1fr}.filter input:first-child{grid-column:auto}}
 </style>
 </head>
 <body>
@@ -125,7 +128,7 @@ body{background:#f6f8fc}
       <aside class="side-column">
         <div class="side-card">
           <h3>Profil volunteer</h3>
-          <div class="profile-mini"><div class="avatar big">PP</div><div><b id="side-name">Peter Parker</b><small>Volunteer · Depok</small></div></div>
+          <div class="profile-mini"><div class="avatar big">PP</div><div><b id="side-name">Peter Parker</b><small id="side-location">Volunteer · Depok</small></div></div>
           <div class="profile-progress"><span></span></div>
           <small class="muted">Profil 75% lengkap</small>
           <button class="btn btn-outline full" id="edit-profile-side">Lengkapi profil</button>
@@ -148,7 +151,12 @@ body{background:#f6f8fc}
 
   <section class="panel" id="panel-kegiatan">
     <div class="page-heading"><span class="eyebrow">TEMUKAN KESEMPATAN</span><h1>Jelajahi peluang volunteer</h1><p class="muted">Pilih kegiatan yang sesuai dengan minat dan waktumu.</p></div>
-    <form class="filter" id="filter-form"><iPPut id="search" placeholder="Cari nama atau deskripsi kegiatan..." aria-label="Cari kegiatan"><select id="category"><option value="">Semua kategori</option><option>Lingkungan</option><option>Pendidikan</option><option>Sosial</option><option>Kesehatan</option></select><iPPut id="location" placeholder="Lokasi" aria-label="Lokasi"><button class="btn btn-primary">Cari kegiatan</button></form>
+    <form class="filter" id="filter-form">
+      <input id="search" placeholder="Cari nama atau deskripsi kegiatan..." aria-label="Cari kegiatan">
+      <select id="category"><option value="">Semua kategori</option><option>Lingkungan</option><option>Pendidikan</option><option>Sosial</option><option>Kesehatan</option></select>
+      <input id="location" placeholder="Lokasi" aria-label="Lokasi">
+      <button class="btn btn-primary">Cari kegiatan</button>
+    </form>
     <div class="section-head" style="margin-top:10px"><div><span class="eyebrow">KEGIATAN TERBUKA</span><h2>Temukan komunitasmu</h2></div><span class="count" id="event-count">6 kegiatan</span></div>
     <div class="cards" id="all-events"></div>
     <div class="empty" id="empty-state" hidden><div>⌕</div><h3>Belum ada kegiatan yang cocok</h3><p>Coba ubah kata kunci atau filter pencarian.</p></div>
@@ -166,27 +174,77 @@ body{background:#f6f8fc}
   </section>
 
   <section class="panel" id="panel-profil">
-    <div class="page-heading"><span class="eyebrow">AKUN SAYA</span><h1>Profil volunteer</h1><p class="muted">Informasi akun dan minat kegiatanmu.</p></div>
+    <div class="page-heading">
+      <span class="eyebrow">AKUN SAYA</span>
+      <h1>Profil volunteer</h1>
+      <p class="muted">Informasi akun dan minat kegiatanmu.</p>
+    </div>
     <form class="form-card wide" id="profile-form">
-      <div class="profile-mini" style="margin-bottom:20px"><div class="avatar big">PP</div><div><b id="profile-heading-name">Peter Parker</b><small>Volunteer sejak Oktober 2026</small></div></div>
-      <div class="profile-layout">
-        <div><label>Nama lengkap</label><iPPut id="profile-name" value="Peter Parker" required></div>
-        <div><label>Email</label><iPPut value="Peter.Parker@email.com" type="email" disabled></div>
-        <div><label>Domisili</label><iPPut value="Depok" disabled></div>
-        <div><label>Keahlian</label><iPPut value="Desain grafis, komunikasi" disabled></div>
+      <div class="profile-mini" style="margin-bottom:20px">
+        <div class="avatar big">PP</div>
+        <div>
+          <b id="profile-heading-name">Peter Parker</b>
+          <small>Volunteer sejak Oktober 2026</small>
+        </div>
       </div>
-      <label>Minat volunteer</label><iPPut value="Pendidikan, Lingkungan, Sosial" disabled>
-      <label>Bio</label><textarea rows="3" disabled>Suka terlibat dalam kegiatan sosial dan ingin memberi dampak positif bagi lingkungan sekitar.</textarea>
-      <p class="muted" style="font-size:11px">Informasi profil contoh dapat diubah pada nama tampilan.</p>
+
+      <div class="profile-layout">
+        <div>
+          <label for="profile-name">Nama lengkap</label>
+          <input id="profile-name" value="Peter Parker" required>
+        </div>
+        <div>
+          <label for="profile-email">Email</label>
+          <input id="profile-email" type="email" value="Peter.Parker@email.com" required>
+        </div>
+        <div>
+          <label for="profile-city">Domisili</label>
+          <input id="profile-city" value="Depok">
+        </div>
+        <div>
+          <label for="profile-skills">Keahlian</label>
+          <input id="profile-skills" value="Desain grafis, komunikasi">
+        </div>
+      </div>
+
+      <label for="profile-interests">Minat volunteer</label>
+      <input id="profile-interests" value="Pendidikan, Lingkungan, Sosial">
+
+      <label for="profile-bio">Bio</label>
+      <textarea id="profile-bio" rows="3">Suka terlibat dalam kegiatan sosial dan ingin memberi dampak positif bagi lingkungan sekitar.</textarea>
+
+      <p class="muted" style="font-size:11px">
+        Lengkapi profilmu agar komunitas lebih mengenal dirimu.
+      </p>
       <button class="btn btn-primary" type="submit">Simpan perubahan</button>
     </form>
   </section>
 </main>
+
 <footer class="footer">© 2026 VolunteerHub · Bergerak bersama, membawa dampak.</footer>
 
 <div class="modal-backdrop" id="event-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
- <div class="modal"><div class="modal-head"><div><span class="category" id="modal-category">Sosial</span><h2 id="modal-title">Detail kegiatan</h2><small class="muted" id="modal-organizer"></small></div><button class="modal-close" id="modal-close" aria-label="Tutup">×</button></div>
- <div class="modal-body"><p id="modal-description"></p><div class="modal-info"><div class="info-chip">Tanggal<b id="modal-date"></b></div><div class="info-chip">Lokasi<b id="modal-location"></b></div><div class="info-chip">Durasi<b id="modal-duration"></b></div><div class="info-chip">Kuota tersedia<b id="modal-quota"></b></div></div><h3 style="font:700 14px Manrope">Persyaratan</h3><p id="modal-requirements"></p><div class="modal-actions"><button class="btn btn-primary" id="modal-register">Daftar kegiatan</button><button class="btn btn-outline" id="modal-save">Simpan kegiatan</button></div></div></div>
+  <div class="modal">
+    <div class="modal-head">
+      <div><span class="category" id="modal-category">Sosial</span><h2 id="modal-title">Detail kegiatan</h2><small class="muted" id="modal-organizer"></small></div>
+      <button class="modal-close" id="modal-close" aria-label="Tutup">×</button>
+    </div>
+    <div class="modal-body">
+      <p id="modal-description"></p>
+      <div class="modal-info">
+        <div class="info-chip">Tanggal<b id="modal-date"></b></div>
+        <div class="info-chip">Lokasi<b id="modal-location"></b></div>
+        <div class="info-chip">Durasi<b id="modal-duration"></b></div>
+        <div class="info-chip">Kuota tersedia<b id="modal-quota"></b></div>
+      </div>
+      <h3 style="font:700 14px Manrope">Persyaratan</h3>
+      <p id="modal-requirements"></p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="modal-register">Daftar kegiatan</button>
+        <button class="btn btn-outline" id="modal-save">Simpan kegiatan</button>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -199,68 +257,240 @@ const events = [
  {id:5,name:"Pemeriksaan Kesehatan Komunitas",category:"Kesehatan",date:"09 Januari 2027",location:"Cilandak, Jakarta Selatan",duration:"5 jam",quota:"9 dari 20 peserta",organizer:"Sehat Bersama",description:"Membantu kelancaran kegiatan pemeriksaan kesehatan komunitas, mulai dari registrasi peserta hingga pendampingan antrean.",requirements:"Memiliki komunikasi yang baik dan mengikuti briefing sebelum kegiatan.",status:""},
  {id:6,name:"Penanaman 1000 Pohon",category:"Lingkungan",date:"16 Januari 2027",location:"Sentul, Bogor",duration:"3 jam",quota:"21 dari 50 peserta",organizer:"Hijaukan Negeri",description:"Bergabung dalam gerakan penghijauan melalui penanaman bibit pohon dan edukasi singkat tentang perawatan tanaman.",requirements:"Menggunakan alas kaki yang sesuai untuk kegiatan luar ruang.",status:""}
 ];
+
 let selectedEvent = null;
 let joined = new Set([2,4]);
 let saved = new Set([1,6]);
 const $ = id => document.getElementById(id);
-function toast(message){const t=$('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400)}
+
+function toast(message){
+ const t=$('toast');
+ t.textContent=message;
+ t.classList.add('show');
+ setTimeout(()=>t.classList.remove('show'),2400);
+}
+
 function eventCard(ev){
  const isJoined=joined.has(ev.id),isSaved=saved.has(ev.id);
- return `<article class="event-card"><div class="event-top"><span class="category">${ev.category}</span><span class="muted small-text">${ev.date}</span></div><h3>${ev.name}</h3><p class="muted clamp">${ev.description}</p><div class="event-meta"><span>⌖ ${ev.location.split(',')[0]}</span><span>◷ ${ev.duration}</span></div><div class="card-bottom"><small>Oleh <b>${ev.organizer}</b></small><div class="event-actions"><button class="text-btn ${isSaved?'saved':''}" data-save="${ev.id}" title="Simpan kegiatan">${isSaved?'♥':'♡'}</button><button class="btn btn-outline small" data-detail="${ev.id}">Detail →</button></div></div>${isJoined?'<span class="badge success" style="margin-top:10px;align-self:flex-start">Sudah terdaftar</span>':''}</article>`;
+ return `<article class="event-card">
+  <div class="event-top"><span class="category">${ev.category}</span><span class="muted small-text">${ev.date}</span></div>
+  <h3>${ev.name}</h3>
+  <p class="muted clamp">${ev.description}</p>
+  <div class="event-meta"><span>⌖ ${ev.location.split(',')[0]}</span><span>◷ ${ev.duration}</span></div>
+  <div class="card-bottom"><small>Oleh <b>${ev.organizer}</b></small>
+   <div class="event-actions">
+    <button class="text-btn ${isSaved?'saved':''}" data-save="${ev.id}" title="Simpan kegiatan">${isSaved?'♥':'♡'}</button>
+    <button class="btn btn-outline small" data-detail="${ev.id}">Detail →</button>
+   </div>
+  </div>
+  ${isJoined?'<span class="badge success" style="margin-top:10px;align-self:flex-start">Sudah terdaftar</span>':''}
+ </article>`;
 }
+
 function renderEvents(){
- const q=$('search').value.trim().toLowerCase(),cat=$('category').value.toLowerCase(),loc=$('location').value.trim().toLowerCase();
- const filtered=events.filter(e=>(e.name+' '+e.description).toLowerCase().includes(q)&&(!cat||e.category.toLowerCase()===cat)&&e.location.toLowerCase().includes(loc));
+ const q=$('search').value.trim().toLowerCase();
+ const cat=$('category').value.toLowerCase();
+ const loc=$('location').value.trim().toLowerCase();
+ const filtered=events.filter(e=>
+  (e.name+' '+e.description).toLowerCase().includes(q)&&
+  (!cat||e.category.toLowerCase()===cat)&&
+  e.location.toLowerCase().includes(loc)
+ );
  $('all-events').innerHTML=filtered.map(eventCard).join('');
  $('event-count').textContent=filtered.length+' kegiatan';
  $('empty-state').hidden=filtered.length!==0;
  $('home-events').innerHTML=events.slice(0,2).map(eventCard).join('');
 }
+
 function renderActivity(filter='all'){
  const ids=[...joined].map(id=>events.find(e=>e.id===id)).filter(Boolean);
  const rows=ids.filter(e=>filter==='all'||(e.status||'Menunggu Verifikasi')===filter);
- $('activity-rows').innerHTML=rows.map(e=>`<tr><td><b>${e.name}</b><br><small class="muted">${e.organizer}</small></td><td>${e.date}</td><td>${e.location.split(',')[0]}</td><td><span class="badge ${e.status==='Diterima'?'success':'warning'}">${e.status||'Menunggu Verifikasi'}</span></td><td><button class="btn btn-outline small" data-detail="${e.id}">Detail</button></td></tr>`).join('')||'<tr><td colspan="5" style="text-align:center;padding:30px;color:#718096">Belum ada pendaftaran pada kategori ini.</td></tr>';
+ $('activity-rows').innerHTML=rows.map(e=>`
+  <tr>
+   <td><b>${e.name}</b><br><small class="muted">${e.organizer}</small></td>
+   <td>${e.date}</td>
+   <td>${e.location.split(',')[0]}</td>
+   <td><span class="badge ${e.status==='Diterima'?'success':'warning'}">${e.status||'Menunggu Verifikasi'}</span></td>
+   <td><button class="btn btn-outline small" data-detail="${e.id}">Detail</button></td>
+  </tr>
+ `).join('')||'<tr><td colspan="5" style="text-align:center;padding:30px;color:#718096">Belum ada pendaftaran pada kategori ini.</td></tr>';
  $('stat-joined').textContent=joined.size;
 }
+
 function showPanel(name){
  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
- const panel=$('panel-'+name);if(panel)panel.classList.add('active');
+ const panel=$('panel-'+name);
+ if(panel)panel.classList.add('active');
  document.querySelectorAll('[data-panel]').forEach(a=>a.classList.toggle('active',a.dataset.panel===name));
  window.scrollTo({top:0,behavior:'smooth'});
  if(name==='aktivitas')renderActivity();
 }
+
 function openDetail(id){
- const ev=events.find(e=>e.id===Number(id));if(!ev)return;selectedEvent=ev;
- $('modal-category').textContent=ev.category;$('modal-title').textContent=ev.name;$('modal-organizer').textContent='Diselenggarakan oleh '+ev.organizer;
- $('modal-description').textContent=ev.description;$('modal-date').textContent=ev.date;$('modal-location').textContent=ev.location;$('modal-duration').textContent=ev.duration;$('modal-quota').textContent=ev.quota;$('modal-requirements').textContent=ev.requirements;
+ const ev=events.find(e=>e.id===Number(id));
+ if(!ev)return;
+ selectedEvent=ev;
+ $('modal-category').textContent=ev.category;
+ $('modal-title').textContent=ev.name;
+ $('modal-organizer').textContent='Diselenggarakan oleh '+ev.organizer;
+ $('modal-description').textContent=ev.description;
+ $('modal-date').textContent=ev.date;
+ $('modal-location').textContent=ev.location;
+ $('modal-duration').textContent=ev.duration;
+ $('modal-quota').textContent=ev.quota;
+ $('modal-requirements').textContent=ev.requirements;
  $('modal-register').textContent=joined.has(ev.id)?'Sudah terdaftar':'Daftar kegiatan';
  $('modal-register').disabled=joined.has(ev.id);
  $('modal-save').textContent=saved.has(ev.id)?'♥ Tersimpan':'♡ Simpan kegiatan';
  $('event-modal').classList.add('open');
 }
-function closeModal(){$('event-modal').classList.remove('open')}
+
+function closeModal(){
+ $('event-modal').classList.remove('open');
+}
+
 document.addEventListener('click',e=>{
- const go=e.target.closest('[data-go]');if(go){e.preventDefault();showPanel(go.dataset.go);return}
- const nav=e.target.closest('[data-panel]');if(nav){e.preventDefault();showPanel(nav.dataset.panel);return}
- const detail=e.target.closest('[data-detail]');if(detail){openDetail(detail.dataset.detail);return}
- const save=e.target.closest('[data-save]');if(save){const id=Number(save.dataset.save);saved.has(id)?saved.delete(id):saved.add(id);renderEvents();toast(saved.has(id)?'Kegiatan disimpan':'Kegiatan dihapus dari simpanan');return}
- const activityFilter=e.target.closest('[data-activity-filter]');if(activityFilter){document.querySelectorAll('[data-activity-filter]').forEach(b=>b.classList.toggle('active',b===activityFilter));renderActivity(activityFilter.dataset.activityFilter)}
+ const go=e.target.closest('[data-go]');
+ if(go){e.preventDefault();showPanel(go.dataset.go);return}
+
+ const nav=e.target.closest('[data-panel]');
+ if(nav){e.preventDefault();showPanel(nav.dataset.panel);return}
+
+ const detail=e.target.closest('[data-detail]');
+ if(detail){openDetail(detail.dataset.detail);return}
+
+ const save=e.target.closest('[data-save]');
+ if(save){
+  const id=Number(save.dataset.save);
+  saved.has(id)?saved.delete(id):saved.add(id);
+  renderEvents();
+  toast(saved.has(id)?'Kegiatan disimpan':'Kegiatan dihapus dari simpanan');
+  return;
+ }
+
+ const activityFilter=e.target.closest('[data-activity-filter]');
+ if(activityFilter){
+  document.querySelectorAll('[data-activity-filter]').forEach(b=>b.classList.toggle('active',b===activityFilter));
+  renderActivity(activityFilter.dataset.activityFilter);
+ }
 });
-$('filter-form').addEventListener('submit',e=>{e.preventDefault();renderEvents()});
-['search','category','location'].forEach(id=>$(id).addEventListener('iPPut',renderEvents));
+
+$('filter-form').addEventListener('submit',e=>{
+ e.preventDefault();
+ renderEvents();
+});
+
+['search','category','location'].forEach(id=>{
+ $(id).addEventListener('input',renderEvents);
+});
+
 $('modal-close').addEventListener('click',closeModal);
-$('event-modal').addEventListener('click',e=>{if(e.target===$('event-modal'))closeModal()});
+
+$('event-modal').addEventListener('click',e=>{
+ if(e.target===$('event-modal'))closeModal();
+});
+
 $('modal-register').addEventListener('click',()=>{
  if(!selectedEvent||joined.has(selectedEvent.id))return;
- joined.add(selectedEvent.id);selectedEvent.status='Menunggu Verifikasi';renderEvents();renderActivity();$('modal-register').textContent='Menunggu Verifikasi';$('modal-register').disabled=true;toast('Pendaftaran berhasil dikirim!');
+ joined.add(selectedEvent.id);
+ selectedEvent.status='Menunggu Verifikasi';
+ renderEvents();
+ renderActivity();
+ $('modal-register').textContent='Menunggu Verifikasi';
+ $('modal-register').disabled=true;
+ toast('Pendaftaran berhasil dikirim!');
 });
+
 $('modal-save').addEventListener('click',()=>{
- if(!selectedEvent)return;const id=selectedEvent.id;saved.has(id)?saved.delete(id):saved.add(id);$('modal-save').textContent=saved.has(id)?'♥ Tersimpan':'♡ Simpan kegiatan';renderEvents();toast(saved.has(id)?'Kegiatan disimpan':'Kegiatan dihapus dari simpanan');
+ if(!selectedEvent)return;
+ const id=selectedEvent.id;
+ saved.has(id)?saved.delete(id):saved.add(id);
+ $('modal-save').textContent=saved.has(id)?'♥ Tersimpan':'♡ Simpan kegiatan';
+ renderEvents();
+ toast(saved.has(id)?'Kegiatan disimpan':'Kegiatan dihapus dari simpanan');
 });
-function editProfile(){showPanel('profil')}
-$('edit-profile-top').addEventListener('click',editProfile);$('edit-profile-side').addEventListener('click',editProfile);$('profile-menu').addEventListener('click',editProfile);
-$('profile-form').addEventListener('submit',e=>{e.preventDefault();const name=$('profile-name').value.trim()||'Peter Parker';$('nav-name').textContent=name;$('side-name').textContent=name;$('greeting-name').textContent=name.split(' ')[0];$('profile-heading-name').textContent=name;$('cert-name').textContent=name;toast('Profil berhasil diperbarui')});
-renderEvents();renderActivity();
+
+function editProfile(){
+ showPanel('profil');
+}
+
+$('edit-profile-top').addEventListener('click',editProfile);
+$('edit-profile-side').addEventListener('click',editProfile);
+$('profile-menu').addEventListener('click',editProfile);
+
+/* DATA PROFIL VOLUNTEER */
+const profileStorageKey='volunteerhub-profile';
+
+const defaultProfile={
+ name:'Peter Parker',
+ email:'Peter.Parker@email.com',
+ city:'Depok',
+ skills:'Desain grafis, komunikasi',
+ interests:'Pendidikan, Lingkungan, Sosial',
+ bio:'Suka terlibat dalam kegiatan sosial dan ingin memberi dampak positif bagi lingkungan sekitar.'
+};
+
+function updateProfileDisplay(profile){
+ $('nav-name').textContent=profile.name;
+ $('side-name').textContent=profile.name;
+ $('side-location').textContent='Volunteer · '+(profile.city||'Belum diisi');
+ $('greeting-name').textContent=profile.name.split(' ')[0];
+ $('profile-heading-name').textContent=profile.name;
+ $('cert-name').textContent=profile.name;
+}
+
+function loadProfile(){
+ let profile={...defaultProfile};
+
+ try{
+  const savedProfile=localStorage.getItem(profileStorageKey);
+  if(savedProfile){
+   profile={...defaultProfile,...JSON.parse(savedProfile)};
+  }
+ }catch(error){
+  console.error('Gagal membaca data profil:',error);
+ }
+
+ $('profile-name').value=profile.name;
+ $('profile-email').value=profile.email;
+ $('profile-city').value=profile.city;
+ $('profile-skills').value=profile.skills;
+ $('profile-interests').value=profile.interests;
+ $('profile-bio').value=profile.bio;
+
+ updateProfileDisplay(profile);
+}
+
+$('profile-form').addEventListener('submit',function(e){
+ e.preventDefault();
+
+ const profile={
+  name:$('profile-name').value.trim(),
+  email:$('profile-email').value.trim(),
+  city:$('profile-city').value.trim(),
+  skills:$('profile-skills').value.trim(),
+  interests:$('profile-interests').value.trim(),
+  bio:$('profile-bio').value.trim()
+ };
+
+ if(!profile.name||!profile.email){
+  toast('Nama dan email wajib diisi!');
+  return;
+ }
+
+ try{
+  localStorage.setItem(profileStorageKey,JSON.stringify(profile));
+  updateProfileDisplay(profile);
+  toast('Profil berhasil diperbarui!');
+ }catch(error){
+  toast('Gagal menyimpan profil.');
+ }
+});
+
+/* Jalankan saat halaman dibuka */
+loadProfile();
+renderEvents();
+renderActivity();
 </script>
 </body>
 </html>
