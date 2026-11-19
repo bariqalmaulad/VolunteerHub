@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VolunteerHub — temukan kegiatan sosial dan bergerak bersama.">
+  <title>Temukan Kegiatan · VolunteerHub</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">V</span> VolunteerHub</a>
+  <nav>
+    <a href="#kegiatan">Jelajahi</a>
+    <a href="#tentang">Tentang</a>
+    <a class="btn btn-outline small" href="#cara-kerja">Masuk</a>
+    <a class="btn btn-primary small" href="#cara-kerja">Daftar</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <span class="eyebrow">VOLUNTEERHUB · BERGERAK BERSAMA</span>
+      <h1>Waktu dan kepedulianmu<br><em>bisa mengubah banyak hal.</em></h1>
+      <p>Temukan kegiatan sosial, bergabung dengan komunitas, dan catat setiap kontribusimu.</p>
+      <a class="btn btn-light" href="#kegiatan">Jelajahi kegiatan <span>→</span></a>
+    </div>
+    <div class="hero-art">
+      <div class="orb orb1"></div><div class="orb orb2"></div>
+      <div class="hero-card">
+        <div class="hero-icon">✦</div>
+        <b>Small actions.</b><b class="blue-text">Real impact.</b>
+        <small>Temukan ruang untuk berbuat baik.</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="kegiatan">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">KEGIATAN TERBUKA</span>
+        <h2>Jelajahi peluang volunteer</h2>
+        <p class="muted">Pilih kegiatan yang sesuai dengan minat dan waktumu.</p>
+      </div>
+      <span class="count" id="event-count">3 kegiatan</span>
+    </div>
+
+    <form class="filter" id="filter-form">
+      <input id="search" type="search" placeholder="Cari nama atau deskripsi kegiatan..." aria-label="Cari kegiatan">
+      <input id="category" type="text" placeholder="Kategori" aria-label="Filter kategori">
+      <input id="location" type="text" placeholder="Lokasi" aria-label="Filter lokasi">
+      <button class="btn btn-primary" type="submit">Cari kegiatan</button>
+    </form>
+
+    <div class="cards" id="event-cards">
+      <article class="event-card" data-name="Bersih Pantai Bersama" data-description="Aksi membersihkan area pantai dan menjaga lingkungan pesisir." data-category="Lingkungan" data-location="Depok">
+        <div class="event-top"><span class="category">Lingkungan</span><span class="muted small-text">05 Des 2026</span></div>
+        <h3>Bersih Pantai Bersama</h3>
+        <p class="muted clamp">Aksi membersihkan area pantai dan menjaga lingkungan pesisir bersama komunitas.</p>
+        <div class="event-meta"><span>⌖ Depok</span><span>◷ 3 jam</span></div>
+        <div class="card-bottom"><small>Oleh <b>Komunitas Peduli Alam</b></small><a href="#cara-kerja">Info kegiatan →</a></div>
+      </article>
+
+      <article class="event-card" data-name="Berbagi Buku untuk Anak" data-description="Mengumpulkan dan membagikan buku bacaan untuk anak-anak." data-category="Pendidikan" data-location="Jakarta">
+        <div class="event-top"><span class="category">Pendidikan</span><span class="muted small-text">12 Des 2026</span></div>
+        <h3>Berbagi Buku untuk Anak</h3>
+        <p class="muted clamp">Mengumpulkan dan membagikan buku bacaan untuk mendukung semangat belajar anak-anak.</p>
+        <div class="event-meta"><span>⌖ Jakarta</span><span>◷ 2 jam</span></div>
+        <div class="card-bottom"><small>Oleh <b>Ruang Baca Kita</b></small><a href="#cara-kerja">Info kegiatan →</a></div>
+      </article>
+
+      <article class="event-card" data-name="Dapur Berbagi" data-description="Menyiapkan dan membagikan makanan bagi masyarakat sekitar." data-category="Sosial" data-location="Tangerang">
+        <div class="event-top"><span class="category">Sosial</span><span class="muted small-text">19 Des 2026</span></div>
+        <h3>Dapur Berbagi</h3>
+        <p class="muted clamp">Menyiapkan paket makanan dan membagikannya kepada masyarakat sekitar.</p>
+        <div class="event-meta"><span>⌖ Tangerang</span><span>◷ 4 jam</span></div>
+        <div class="card-bottom"><small>Oleh <b>Gerakan Berbagi</b></small><a href="#cara-kerja">Info kegiatan →</a></div>
+      </article>
+    </div>
+
+    <div class="empty" id="empty-state" hidden>
+      <div>⌕</div><h3>Belum ada kegiatan yang cocok</h3>
+      <p>Coba ubah kata kunci atau filter pencarian.</p>
+    </div>
+  </section>
+
+  <section class="detail-box" id="tentang">
+    <span class="eyebrow">TENTANG VOLUNTEERHUB</span>
+    <h2>Hubungkan niat baik dengan aksi nyata.</h2>
+    <p>VolunteerHub membantu relawan menemukan peluang kegiatan sosial dan mengenal komunitas yang bergerak untuk membawa dampak positif.</p>
+  </section>
+
+  <section class="detail-box" id="cara-kerja">
+    <span class="eyebrow">DEMO TAMPILAN</span>
+    <h2>Ini adalah versi pratinjau statis.</h2>
+    <p>Halaman ini menampilkan contoh kegiatan dan fitur pencarian di browser. Login, pendaftaran relawan, pengelolaan kegiatan, check-in, sertifikat, dan data MySQL dari aplikasi PHP asli belum aktif di GitHub Pages.</p>
+  </section>
+</main>
+
+<footer class="footer">© 2026 VolunteerHub · Hubungkan niat baik dengan aksi nyata.</footer>
+
+<script>
+  const form = document.getElementById('filter-form');
+  const search = document.getElementById('search');
+  const category = document.getElementById('category');
+  const locationInput = document.getElementById('location');
+  const cards = [...document.querySelectorAll('.event-card')];
+  const count = document.getElementById('event-count');
+  const empty = document.getElementById('empty-state');
+
+  function filterEvents(event) {
+    if (event) event.preventDefault();
+    const q = search.value.trim().toLocaleLowerCase('id');
+    const cat = category.value.trim().toLocaleLowerCase('id');
+    const loc = locationInput.value.trim().toLocaleLowerCase('id');
+    let visible = 0;
+
+    cards.forEach(card => {
+      const text = (card.dataset.name + ' ' + card.dataset.description).toLocaleLowerCase('id');
+      const matches = text.includes(q)
+        && card.dataset.category.toLocaleLowerCase('id').includes(cat)
+        && card.dataset.location.toLocaleLowerCase('id').includes(loc);
+      card.hidden = !matches;
+      if (matches) visible++;
+    });
+
+    count.textContent = visible + ' kegiatan';
+    empty.hidden = visible !== 0;
+  }
+
+  form.addEventListener('submit', filterEvents);
+  [search, category, locationInput].forEach(input => input.addEventListener('input', filterEvents));
+</script>
+</body>
+</html>
